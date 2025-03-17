@@ -5,6 +5,7 @@ import statistics
 from typing import Callable
 from luk import Problem, LukProblems
 from luk.mytesseract import TesseractRowList, TesseractRow
+from config import workdir
 
 
 def PSM3(img: MatLike, d: dict[str, list[int|float|str]]) -> tuple[LukProblems, bool]:
@@ -185,9 +186,9 @@ def show(img: MatLike):
     
 def main() -> None:
 
-    fileNumber = 10
+    fileNumber = 1
 
-    img: MatLike = cv2.imread(f"./PNGs/input-{str(fileNumber).zfill(2)}.png")
+    img: MatLike = cv2.imread(f"{workdir}/src/{str(fileNumber).zfill(2)}.png")
 
     with open(f"./JSONs-PSM3/{str(fileNumber).zfill(2)}.json", "r") as f:
         d: dict[str, list[int|float|str]] = json.load(f)
