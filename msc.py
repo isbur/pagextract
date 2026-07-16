@@ -1,3 +1,18 @@
+import os
+from config import workdir, zfill_width, src_img_ext
+
+
+def get_src_path(page_number: int) -> str:
+    
+    extensions = src_img_ext.split("|")
+    for ext in extensions:
+        path = f"{workdir}/src/{str(page_number).zfill(zfill_width)}.{ext}"
+        if os.path.exists(path):
+            real_path = path
+    
+    return real_path
+
+
 # import jsonpickle
 
 #### JSONify

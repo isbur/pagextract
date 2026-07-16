@@ -5,6 +5,7 @@ from docx import Document
 from docx.shared import Inches
 from PIL import Image
 from config import workdir, sol_img_ext
+from msc import get_src_path
 
 
 with open(f"{workdir}/problem_ranges_edited.json", "r") as f:
@@ -12,7 +13,7 @@ with open(f"{workdir}/problem_ranges_edited.json", "r") as f:
 
 doc = Document()
 for i, A in problem_ranges.items():
-    src_img_path = f"{workdir}/src/{str(i).zfill(2)}.png"
+    src_img_path = get_src_path(i)
     doc.add_picture(src_img_path, width = Inches(6.0))
     for n in range(A[0], A[1] + 1):
         zfilled_number = str(n).zfill(3)
